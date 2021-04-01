@@ -1,0 +1,14 @@
+{%extends 'home.html'%}
+{%block content%}
+<form class='form-control'action="{% url 'pro' id %}" method="post">
+    <h2 class="header">Task App </h2>
+    <h3> <label for="time">Time:</label> </h3><input type="date" name="begin" value="{{time}}"
+    min="1997-01-01" max="2030-12-31"> 
+    <h3>Description: </h3><input type="text" name="Des" value="{{des}}"> <br>
+    {% csrf_token   %}
+    <center><h3><pre></pre> Set Reminder</h3></center><input name="check" type="checkbox" {%if comp%} checked {%endif%}>
+    <br>
+    <center><h3><pre></pre> Marked Complete</h3></center><input name="marked" type="checkbox" {%if mark%} checked {%endif%}>
+    <br>
+    <button type='submit' class='btn' style="width: 100%;" >submit</button>
+{%endblock%}

@@ -1,0 +1,14 @@
+{%extends 'home.html'%}
+{%block content%}
+<form class='form-control'action="/process" method="post">
+    <h2 class="header">Task App </h2>
+    <h3> <label for="time">Time:</label> </h3><input type="date" name="begin"
+    placeholder="dd-mm-yyyy" value=""
+    min="1997-01-01" max="2030-12-31"> 
+    <h3>Description: </h3><input type="text" name="Des"> <br>
+    {% csrf_token   %}
+    <center><h3><pre></pre> Set Reminder</h3></center><input name="check" type="checkbox">
+    <br>
+    <br>
+    <button type='submit' class='btn' style="width: 100%;">submit</button>
+{%endblock%}

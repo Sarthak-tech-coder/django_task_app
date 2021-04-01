@@ -1,0 +1,45 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{%static 'style.css'%}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+    <div class='container'>
+        {%block content%}
+
+        <h3 class="header">Task App <button class='btn' style="float: right;"> <a href="/add"
+                    style="text-decoration: none;color:white;"> Add Task </a> </button></h3>
+        {%if obj%}
+        {%for i in obj%}
+        <div class="task {%if i.comp == True%} reminder {%endif%}">
+            <div>{{i.description}} <span style="float: right;">
+                    <a href="{% url 'delete_name' i.id %}" aria-hidden="true"> <button class="btn"><i
+                                style="color:white" class="fa fa-times "></i></button></a>
+                </span></div>
+            {{i.time}}<br>
+               <div>
+                   
+                <a href="{% url 'edits' i.id %}" aria-hidden="true"> <button class="btn" style="background:rgb(58, 39, 226);">Edit</button></a>
+                {%if i.marked == True%}<div>
+                    Completed
+                </div>
+            </div>
+                {%endif%}
+            </a></button>
+        </div>
+        {%endfor%}
+        {%endif%}
+        {%endblock%}
+    </div>
+</body>
+
+</html>
